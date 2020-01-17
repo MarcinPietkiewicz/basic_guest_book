@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="pl-PL">
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+    <title>Księga Gości {%print ("<Twoje imię>") %}</title>
+    <meta name="description" content="Strona z wpisami gości" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body>
+    <header>
+        <h1>Moja Księga Gości</h1>
+    </header>
+    <main>
+    <nav><div class="menu">
+        <a href="/" title="Przejdź do Księgi Gości">Księga Gości</a>
+        <a href="#addcomment" title="Dodaj wpis">Dodaj wpis</a>
+        <a href="javascript:alert('Witaj na blogu!');">Blog</a>
+        <a href="http://www.pewny.net/frontend/cat.png" target="_blank">
+            <img height="15"
+                 src="http://pewny.net/frontend/cat.png"
+                 alt="Kot Domowy" />
+
+        </a>
+    </div></nav>
+    <section id="comments">
+        <h2>Księga Gości</h2>
+        <ol>
+            {% for entry in comments %}
+
+            <li><p><a href="mailto:{{entry.email}}"> {{ entry.name }} </a>: {{entry.comment}}</p></li>
+
+            {% endfor %}
+        </ol>
+    </section>
+    </main>
+    <section id="addcomment">
+    <h2>Dodaj wpis</h2>
+    <form method="get">
+        <table>
+            <tr>
+                <td><label for="name">Imię:</label></td>
+                <td><input type="text" id="name" name="guest_name" /></td>
+            </tr><tr>
+                <td><label for="email">E-mail:</label></td>
+                <td><input type="text" id="email" name="guest_email" /></td>
+            </tr><tr>
+                <td colspan="2"><label for="comment">Twój komentarz:</label></td>
+            </tr><tr>
+                <td></td>
+                <td><textarea rows="2" id="comment" name="guest_comment"></textarea></td>
+            </tr><tr>
+                <td></td><td><button type="submit">Dodaj</button></td>
+            </tr>
+        </table>
+    </form>
+</section>
+    <footer>
+        <div>
+            Copyright &copy; {{ "<Twoje imię>" }}
+        </div>
+    </footer>
+</body>
+</html>
