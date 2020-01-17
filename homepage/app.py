@@ -37,11 +37,11 @@ guestbook = [
 
 app = Flask(__name__)
 
-@app.route("/")
+@app.route("/", methods=['POST', 'GET'])
 def hello():
-    name = request.args.get('guest_name', '')
-    email = request.args.get('guest_email', '')
-    comment = request.args.get('guest_comment', '')
+    name = request.form.get('guest_name', '')
+    email = request.form.get('guest_email', '')
+    comment = request.form.get('guest_comment', '')
     new_guest = {"name": name, "email": email, "comment":comment}
 
     if name and email and comment:
