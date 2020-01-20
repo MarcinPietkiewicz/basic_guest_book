@@ -6,6 +6,7 @@
     <title>Księga Gości {%print ("<Twoje imię>") %}</title>
     <meta name="description" content="Strona z wpisami gości" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
 </head>
 <body>
     <header>
@@ -36,19 +37,19 @@
     </main>
     <section id="addcomment">
     <h2>Dodaj wpis</h2>
-    <form method="post">
+    <form method="post" onsubmit="return validateComment()">
         <table>
             <tr>
                 <td><label for="name">Imię:</label></td>
-                <td><input type="text" id="name" name="guest_name" /></td>
+                <td><input type="text" autocomplete id="name" name="guest_name" /></td>
             </tr><tr>
                 <td><label for="email">E-mail:</label></td>
-                <td><input type="email" id="email" name="guest_email" /></td>
+                <td><input type="email" required id="email" name="guest_email" /></td>
             </tr><tr>
                 <td colspan="2"><label for="comment">Twój komentarz:</label></td>
             </tr><tr>
                 <td></td>
-                <td><textarea rows="2" id="comment" name="guest_comment"></textarea></td>
+                <td><textarea rows="2" autofocus placeholder="twój komentarz" id="comment" name="guest_comment"></textarea></td>
             </tr><tr>
                 <td></td><td><button type="submit">Dodaj</button></td>
             </tr>

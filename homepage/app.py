@@ -47,6 +47,9 @@ def hello():
     if name and email and comment:
         guestbook.append(new_guest)
 
+    if (request.method == 'POST'):
+        return redirect('/', code=302, Response=None)
+
 
     return render_template('hello.html', comments=guestbook)
 
